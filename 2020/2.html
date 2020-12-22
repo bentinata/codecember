@@ -28,8 +28,102 @@ function loop(frameTime) {
 }
 
 function u(t) {
-  // your code goes here
+  c.width = c.width
+  const center = [150, 150];
+  const radius = 100;
+  const maxSides = 6 - 2 // minimum of 2 sides
+  const sides = 2 + Math.abs(t % (maxSides * 2) - maxSides);
+  const lines = Array(Math.ceil(sides)).fill().map((_, i) => {
+    const length = Math.PI * 2 / sides;
+    return [center[0] + radius*Math.cos(length*i), center[1] + radius*Math.sin(length*i)];
+  })
+
+  x.beginPath();
+  lines.forEach(l => x.lineTo(...l));
+  x.lineTo(...lines[0]);
+  x.stroke();
+  x.fillText("sides: " + sides, 10, 10);
 }
 
 loop(0)
+
+(function(t) {
+  for (c.width=600, B=[i=7]; i--; x.beginPath(x.stroke()))
+    d=i/6<<6,
+    B[i]=[300+Math.sin(p=1.047*i-t)*d,169+Math.cos(p)*d];
+
+  B.forEach(v =>
+    B.forEach(q => {
+      x.lineTo(...v);
+      x.lineTo(...q);
+    })
+  );
+
+  x.stroke()
+})(0);
+
+(function drawLine() {
+  x.beginPath();
+  x.lineTo(0, 0);
+  x.lineTo(100, 100);
+  x.stroke();
+})();
+
+(function drawSetOfLines() {
+  const lines = [[10, 10], [10, 50], [50, 10]];
+
+  x.beginPath();
+  lines.forEach(l => x.lineTo(...l));
+  x.lineTo(...lines[0])
+  x.stroke();
+})();
+
+(function drawPolygon() {
+  const center = [120, 120];
+  const radius = 100;
+  const sides = 4.5;
+  const lines = Array(Math.ceil(sides)).fill().map((_, i) => {
+    const length = Math.PI * 2 / sides;
+    return [center[0] + radius*Math.cos(length*i), center[1] + radius*Math.sin(length*i)];
+  })
+
+  x.beginPath();
+  lines.forEach(l => x.lineTo(...l));
+  x.lineTo(...lines[0]);
+  x.lineTo(...center);
+  x.stroke();
+})();
+
+(function drawHalfPolygon() {
+  const center = [240, 240];
+  const radius = 100;
+  const sides = 3;
+  const lines = Array(sides).fill().map((_, i) => {
+    const length = Math.PI / sides;
+    return [center[0] + radius*Math.cos(length*i), center[1] + radius*Math.sin(length*i)];
+  })
+
+  x.beginPath();
+  lines.forEach(l => x.lineTo(...l));
+  x.lineTo(...lines[0]);
+  x.stroke();
+})();
+
+function drawUpdatingPolygon(t) {
+  c.width = c.width
+  const center = [150, 150];
+  const radius = 100;
+  const maxSides = 24 - 2 // minimum of 2 sides
+  const sides = 2 + Math.abs(t % (maxSides * 2) - maxSides);
+  const lines = Array(Math.ceil(sides)).fill().map((_, i) => {
+    const length = Math.PI * 2 / sides;
+    return [center[0] + radius*Math.cos(length*i), center[1] + radius*Math.sin(length*i)];
+  })
+
+  x.beginPath();
+  lines.forEach(l => x.lineTo(...l));
+  x.lineTo(...lines[0]);
+  x.stroke();
+  x.fillText("sides: " + sides, 10, 10);
+}
 </script>
