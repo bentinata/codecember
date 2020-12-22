@@ -1,0 +1,35 @@
+<canvas></canvas>
+<script>
+const FPS = 60
+const c = document.querySelector('canvas')
+c.width = 640
+c.height = 360
+const x = c.getContext('2d')
+
+let time = 0
+let frame = 0
+let nextFrameMs = 0
+
+function loop(frameTime) {
+  if (frameTime < nextFrameMs - 1.5) {
+    return;
+  }
+
+  nextFrameMs = Math.max(nextFrameMs + 1000/FPS, frameTime)
+  time = frame/FPS;
+
+  if (time * FPS | 0 == frame - 1) {
+    time += 1/FPS;
+  }
+  frame++;
+
+  u(time);
+  requestAnimationFrame(loop);
+}
+
+function u(t) {
+  // your code goes here
+}
+
+loop(0)
+</script>
